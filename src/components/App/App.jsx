@@ -28,6 +28,16 @@ export default function App() {
   );
 }
 
+//  return (
+//     <Routes>
+//       <Route path="/" element={<HomePage />} />
+//       <Route path="/register" element={<RegistrationPage />} />
+//       <Route path="/login" element={<LoginPage />} />
+//       <Route path="/contacts" element={<PrivateRoute><ContactsPage /></PrivateRoute>} />
+//     </Routes>
+//   );
+// }
+
 // return (
 //     <Layout>
 //       <AppBar />
