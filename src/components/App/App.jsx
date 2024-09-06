@@ -1,3 +1,6 @@
+// refreshUser - оновлення користувача за токеном. Базовий тип екшену "auth/refresh".
+// Використовується у компоненті App під час його монтування.
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchContacts } from "../../redux/contactsOps";
@@ -24,3 +27,15 @@ export default function App() {
     </div>
   );
 }
+
+// return (
+//     <Layout>
+//       <AppBar />
+//       <ContactForm />
+// {
+//   isLoading && !error && <b>Request in progress...</b>;
+// }
+//       <ContactList />
+//     </Layout>
+//   );
+// };
