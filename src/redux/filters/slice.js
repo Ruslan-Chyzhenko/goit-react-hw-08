@@ -5,8 +5,11 @@ const INITIAL_STATE = {
 };
 
 const filtersSlice = createSlice({
+  // Name slice
   name: "filters",
+  // Beginner state reducer slice
   initialState: INITIAL_STATE,
+  // Object reducers
   reducers: {
     changeFilter(state, action) {
       state.name = action.payload;
@@ -16,3 +19,4 @@ const filtersSlice = createSlice({
 
 export const filtersReducer = filtersSlice.reducer;
 export const { changeFilter } = filtersSlice.actions;
+// export const selectNameFilter = (state) => state.filters?.name || "";
