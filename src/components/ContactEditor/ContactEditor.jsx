@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import css from "./ContactEditor.module.css";
 
-export const ContactEditor = () => {
+const ContactEditor = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -26,3 +26,5 @@ export const ContactEditor = () => {
     </form>
   );
 };
+
+export default ContactEditor;
