@@ -16,16 +16,18 @@ import { contactsReducer } from "./contacts/slice";
 import { authReducer } from "./auth/slice";
 
 const persistConfig = {
-  key: "contacts",
+  key: "root",
   storage,
-  whitelist: ["items"],
+  whitelist: ["auth"],
+};
+
+const rootReducer = {
+  auth: persistReducer(persistConfig, authReducer),
+  contacts: contactsReducer,
 };
 
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(persistConfig, authReducer),
-    contacts: contactsReducer,
-  },
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
