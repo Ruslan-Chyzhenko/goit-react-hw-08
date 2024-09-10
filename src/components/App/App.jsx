@@ -3,8 +3,10 @@
 
 import { useEffect, lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, NavLink } from "react-router-dom";
+import { Loader } from "../Loader";
 import clsx from "clsx";
+import css from "./App.module.css";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
@@ -29,6 +31,8 @@ import { logOut, refreshUser } from "./redux/auth/operations";
 export default function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
+  const user = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -99,7 +103,7 @@ export default function App() {
                 path="/login"
                 element={
                   <RestrictedRoute
-                    component={<LoginPage />}
+                    element={<LoginPage />}
                     redirectTo="/contacts"
                   />
                 }
@@ -108,7 +112,7 @@ export default function App() {
                 path="/register"
                 element={
                   <RestrictedRoute
-                    component={<RegisterPage />}
+                    element={<RegistrationPage />}
                     redirectTo="/contacts"
                   />
                 }
@@ -117,7 +121,7 @@ export default function App() {
                 path="/contacts"
                 element={
                   <PrivateRoute
-                    component={<ContactsPage />}
+                    element={<ContactsPage />}
                     redirectTo="/login"
                   />
                 }
