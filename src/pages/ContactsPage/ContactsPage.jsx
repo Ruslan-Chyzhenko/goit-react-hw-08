@@ -1,5 +1,5 @@
-import ContactEditor from "../../components/Contact/ContactEditor";
-import ContactList from "../../components/Contact/ContactList";
+import ContactEditor from "../../components/ContactEditor/ContactEditor";
+import ContactList from "../../components/ContactList/ContactList";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
