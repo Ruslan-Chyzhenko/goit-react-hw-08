@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectFilter } from "../../redux/contacts/selectors";
 
 import css from "./ContactList.module.css";
-import { deleteContact } from "../../redux/contactsOps";
+import { deleteContact } from "../../redux/contacts/operations";
 
 export default function ContactList() {
   const dispatch = useDispatch();
