@@ -25,8 +25,8 @@ import {
   selectIsRefreshing,
   selectIsLoggedIn,
   selectUser,
-} from "../redux/auth/selectors";
-import { logOut, refreshUser } from "./redux/auth/operations";
+} from "../../redux/auth/selectors";
+import { logOut, refreshUser } from "../../redux/auth/operations";
 
 export default function App() {
   const dispatch = useDispatch();
