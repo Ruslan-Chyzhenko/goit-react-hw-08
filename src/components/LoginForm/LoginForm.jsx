@@ -5,32 +5,38 @@ import { Formik, Form, Field } from "formik";
 import { useDispatch } from "react-redux";
 import { logIn } from "../../redux/auth/operations";
 import css from "./LoginForm.module.css";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object().shape({
+  email: Yup.string().email("Invalid email").required("Required"),
+  password: Yup.string().min(6, "Password too short").required("Required"),
+});
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-
+  const handleSubmit = (values) => {
     dispatch(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        email: values.email,
+        password: values.password,
       })
     )
       .unwrap()
       .then(() => {
         console.log("login success");
+        actions.resetForm();
       })
       .catch(() => {
         console.log("login error");
       });
-
-    form.reset();
   };
 
   return (
-    <Formik initialValues={{ email: "", password: "" }} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ email: "", password: "" }}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+    >
       <Form>
         <Field name="email" type="email" placeholder="Email" />
         <Field name="password" type="password" placeholder="Password" />

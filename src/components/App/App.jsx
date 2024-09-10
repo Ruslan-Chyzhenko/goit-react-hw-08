@@ -45,11 +45,11 @@ export default function App() {
   if (isRefreshing) return <p>User is refreshing, please wait</p>;
 
   return (
-    <div>
-      <header>
+    <div className={css.container}>
+      <header className={css.header}>
         <nav className={css.nav}>
           <NavLink
-            class={({ isActive }) => clsx(css.link, isActive && css.active)}
+            className={({ isActive }) => clsx(css.link, isActive && css.active)}
             to="/"
           >
             Home
@@ -68,7 +68,11 @@ export default function App() {
                 <p>Hello, {user.name}!</p>
                 <p>Email: {user.email}</p>
               </div>
-              <button type="button" onClick={onLogout}>
+              <button
+                type="button"
+                className={css.logoutButton}
+                onClick={onLogout}
+              >
                 Logout
               </button>
             </>
@@ -94,7 +98,7 @@ export default function App() {
           )}
         </nav>
       </header>
-      <main>
+      <main className={css.main}>
         <Suspense fallback={<Loader />}>
           <Routes>
             <Route path="/" element={<Layout />}>

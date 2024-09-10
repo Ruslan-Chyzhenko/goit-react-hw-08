@@ -9,11 +9,13 @@ import css from "./UserMenu.module.css";
 
 const UserMenu = () => {
   const dispatch = useDispatch();
-  const name = useSelector(selectUser);
+  const user = useSelector(selectUser);
   return (
-    <div>
-      <p>Welcome, {name}!</p>
-      <button onClick={() => dispatch(logOut())}>Log Out</button>
+    <div className={css.userMenu}>
+      <p className={css.userName}>Welcome, {user}!</p>
+      <button className={css.logoutButton} onClick={() => dispatch(logOut())}>
+        Log Out
+      </button>
     </div>
   );
 };

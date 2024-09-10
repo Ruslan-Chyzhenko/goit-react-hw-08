@@ -4,10 +4,16 @@ import css from "./AuthNav.module.css";
 const AuthNav = () => {
   return (
     <nav>
-      <NavLink className={css.link} to="/register">
+      <NavLink
+        className={({ isActive }) => clsx(css.link, isActive && css.active)}
+        to="/register"
+      >
         Register
       </NavLink>
-      <NavLink className={css.link} to="/login">
+      <NavLink
+        className={({ isActive }) => clsx(css.link, isActive && css.active)}
+        to="/login"
+      >
         Login
       </NavLink>
     </nav>
