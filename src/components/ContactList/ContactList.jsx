@@ -5,7 +5,7 @@ import { selectFilter } from "../../redux/contacts/selectors";
 import css from "./ContactList.module.css";
 import { deleteContact } from "../../redux/contacts/operations";
 
-export default function ContactList() {
+const ContactList = () => {
   const dispatch = useDispatch();
   const filteredContacts = useSelector(selectFilter);
 
@@ -29,4 +29,6 @@ export default function ContactList() {
       })}
     </div>
   );
-}
+};
+
+export default ContactList;
