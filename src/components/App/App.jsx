@@ -4,7 +4,7 @@
 import { useEffect, lazy, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, NavLink } from "react-router-dom";
-import { Loader } from "../Loader";
+import Loader from "../Loader/Loader";
 import clsx from "clsx";
 import css from "./App.module.css";
 
