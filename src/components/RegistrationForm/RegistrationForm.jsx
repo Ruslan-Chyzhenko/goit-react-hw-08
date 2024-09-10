@@ -29,7 +29,7 @@ const RegistrationForm = () => {
         <Field name="name" type="text" placeholder="Name" />
         <Field name="email" type="email" placeholder="Email" />
         <Field name="password" type="password" placeholder="Password" />
-        <button type="submit">Register</button>
+        <button type="submit">Sign Up</button>
       </Form>
     </Formik>
   );
