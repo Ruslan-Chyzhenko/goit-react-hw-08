@@ -26,8 +26,16 @@ export default function ContactForm() {
   const handleSubmit = (values, actions) => {
     const { name, number } = values;
 
-    dispatch(addContact({ name, number }));
-    actions.resetForm();
+    console.log("Submitted values:", values);
+
+    dispatch(addContact({ name, number }))
+      .then((response) => {
+        console.log("Contact added:", response);
+        actions.resetForm();
+      })
+      .catch((error) => {
+        console.log("Error adding contact:", error);
+      });
   };
 
   return (
@@ -41,14 +49,14 @@ export default function ContactForm() {
           <label htmlFor="name" className={css.label}>
             Name
           </label>
-          <Field className={css.field} type="text" name="name" />
+          <Field id="name" className={css.field} type="text" name="name" />
           <ErrorMessage name="name" component="div" className={css.error} />
         </div>
         <div className={css.fieldContainer}>
           <label htmlFor="number" className={css.label}>
             Number
           </label>
-          <Field className={css.field} type="text" name="number" />
+          <Field id="number" className={css.field} type="text" name="number" />
           <ErrorMessage name="number" component="div" className={css.error} />
         </div>
         <div className={css.buttonContainer}>
