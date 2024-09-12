@@ -7,7 +7,7 @@ import { deleteContact } from "../../redux/contacts/operations";
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const filteredContacts = useSelector(selectFilter);
+  const filteredContacts = useSelector(selectFilter) || [];
 
   function handleDelete(contactId) {
     dispatch(deleteContact(contactId));
@@ -15,8 +15,8 @@ const ContactList = () => {
 
   return (
     <div className={css.gridContainer}>
-      {filteredContacts.map((contact) => {
-        return (
+      {filteredContacts.length > 0 ? (
+        filteredContacts.map((contact) => (
           <li className={css.item} key={contact.id}>
             <Contact
               id={contact.id}
@@ -25,8 +25,10 @@ const ContactList = () => {
               onDelete={handleDelete}
             />
           </li>
-        );
-      })}
+        ))
+      ) : (
+        <p>No contacts found.</p>
+      )}
     </div>
   );
 };
