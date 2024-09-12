@@ -22,14 +22,10 @@ const ContactsPage = () => {
   return (
     <>
       <DocumentTitle>Your contacts</DocumentTitle>
-      <div>{isLoading && "Request in progress..."}</div>
-      {contacts && contacts.length > 0 ? (
-        <ContactList contacts={contacts} />
-      ) : (
-        <p>No contacts found</p>
-      )}
       <ContactForm />
       <SearchBox />
+      <div>{isLoading && "Request in progress..."}</div>
+      <ContactList />
     </>
   );
 };

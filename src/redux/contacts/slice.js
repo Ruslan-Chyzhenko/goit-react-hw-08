@@ -13,11 +13,9 @@ const handleRejected = (state, action) => {
 };
 
 const INITIAL_STATE = {
-  contacts: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+  items: [],
+  isLoading: false,
+  error: null,
 };
 
 const contactsSlice = createSlice({
@@ -28,42 +26,42 @@ const contactsSlice = createSlice({
       //fetchContacts
       .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = null;
-        state.contacts.items = action.payload;
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
       })
       .addCase(fetchContacts.rejected, handleRejected)
       //addContact
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = null;
-        state.contacts.items.push(action.payload);
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(action.payload);
       })
       .addCase(addContact.rejected, handleRejected)
       //deleteContact
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.contacts.isLoading = false;
-        state.contacts.error = null;
-        const index = state.contacts.items.findIndex(
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
           (contact) => contact.id === action.payload.id
         );
-        state.contacts.items.splice(index, 1);
+        state.items.splice(index, 1);
       })
       .addCase(deleteContact.rejected, handleRejected)
       //logOut
       .addCase(logOut.fulfilled, (state) => {
-        state.contacts.items = [];
-        state.contacts.error = null;
-        state.contacts.isLoading = false;
+        state.items = [];
+        state.error = null;
+        state.isLoading = false;
       });
   },
 });
 
-export const selectContacts = (state) => state.contacts.contacts.items;
-export const selectIsLoading = (state) => state.contacts.contacts.isLoading;
-export const selectError = (state) => state.contacts.contacts.error;
+export const selectContacts = (state) => state.contacts.items;
+export const selectIsLoading = (state) => state.contacts.isLoading;
+export const selectError = (state) => state.contacts.error;
 
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectNameFilter],

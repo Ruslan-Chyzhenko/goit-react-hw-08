@@ -14,22 +14,24 @@ const ContactList = () => {
   }
 
   return (
-    <div className={css.gridContainer}>
-      {filteredContacts.length > 0 ? (
-        filteredContacts.map((contact) => (
-          <li className={css.item} key={contact.id}>
-            <Contact
-              id={contact.id}
-              name={contact.name}
-              number={contact.number}
-              onDelete={handleDelete}
-            />
-          </li>
-        ))
-      ) : (
-        <p>No contacts found.</p>
-      )}
-    </div>
+    <>
+      <ul className={css.gridContainer}>
+        {filteredContacts.length > 0 ? (
+          filteredContacts.map((contact) => (
+            <li className={css.item} key={contact.id}>
+              <Contact
+                id={contact.id}
+                name={contact.name}
+                number={contact.number}
+                onDelete={() => handleDelete(contact.id)}
+              />
+            </li>
+          ))
+        ) : (
+          <p></p>
+        )}
+      </ul>
+    </>
   );
 };
 
