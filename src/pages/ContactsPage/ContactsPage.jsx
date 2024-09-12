@@ -22,7 +22,6 @@ const ContactsPage = () => {
   return (
     <>
       <DocumentTitle>Your contacts</DocumentTitle>
-      <ContactEditor />
       <div>{isLoading && "Request in progress..."}</div>
       {contacts && contacts.length > 0 ? (
         <ContactList contacts={contacts} />
