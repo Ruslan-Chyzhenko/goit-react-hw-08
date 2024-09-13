@@ -4,7 +4,7 @@
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
 import { Formik, Form, Field } from "formik";
-import css from "./RegistrationForm.module.css";
+// import css from "./RegistrationForm.module.css";
 import * as Yup from "yup";
 
 const validationSchema = Yup.object().shape({
