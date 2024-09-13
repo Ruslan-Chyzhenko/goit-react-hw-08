@@ -1,13 +1,13 @@
 import Contact from "../Contact/Contact";
 import { useSelector, useDispatch } from "react-redux";
-import { selectFilter } from "../../redux/contacts/selectors";
+import { selectFilteredContacts } from "../../redux/contacts/slice";
 
 import css from "./ContactList.module.css";
 import { deleteContact } from "../../redux/contacts/operations";
 
 const ContactList = () => {
   const dispatch = useDispatch();
-  const filteredContacts = useSelector(selectFilter) || [];
+  const filteredContacts = useSelector(selectFilteredContacts) || [];
 
   function handleDelete(contactId) {
     dispatch(deleteContact(contactId));
